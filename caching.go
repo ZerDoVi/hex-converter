@@ -10,7 +10,7 @@ func main() {
 	number1 := rand.Int()
 	fmt.Printf("%d - ", number1)
 	Hexadecimal := 16
-	var hex_map []any
+	var hex_map []int
 
 	for number1 > 0 {
 		number2 := number1 / Hexadecimal
@@ -19,28 +19,13 @@ func main() {
 		number1 = number2
 
 	}
-
-	for i, v := range hex_map {
-		switch v {
-		case 10:
-			hex_map[i] = "A"
-		case 11:
-			hex_map[i] = "B"
-		case 12:
-			hex_map[i] = "C"
-		case 13:
-			hex_map[i] = "D"
-		case 14:
-			hex_map[i] = "E"
-		case 15:
-			hex_map[i] = "F"
-		}
-	}
+	var result string
 
 	slices.Reverse(hex_map)
-	var result string
-	for _, r := range hex_map {
-		result += fmt.Sprint(r)
+
+	for _, v := range hex_map {
+		result += fmt.Sprintf("%X", v)
 	}
+
 	fmt.Println(result)
 }
