@@ -10,21 +10,27 @@ import (
 func main() {
 	number1 := rand.Int()
 	fmt.Printf("%d - ", number1)
-	Hexadecimal := 16
-	var hex_map []int
+	//fmt.Printf("%d - %X\n", number1, number1)
+
+	hexadecimal := 16
+	var hexMap []int
+
+	if number1 == 0 {
+		hexMap = append(hexMap, 0)
+	}
 
 	for number1 > 0 {
-		number2 := number1 / Hexadecimal
-		hex_number := number1 - (Hexadecimal * number2)
-		hex_map = append(hex_map, hex_number)
+		number2 := number1 / hexadecimal
+		hexNumber := number1 % hexadecimal
+		hexMap = append(hexMap, hexNumber)
 		number1 = number2
 
 	}
 	var builder strings.Builder
 
-	slices.Reverse(hex_map)
+	slices.Reverse(hexMap)
 
-	for _, v := range hex_map {
+	for _, v := range hexMap {
 		fmt.Fprintf(&builder, "%X", v)
 	}
 	result := builder.String()
