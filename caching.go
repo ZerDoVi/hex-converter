@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"slices"
+	"strings"
 )
 
 func main() {
@@ -19,13 +20,13 @@ func main() {
 		number1 = number2
 
 	}
-	var result string
+	var builder strings.Builder
 
 	slices.Reverse(hex_map)
 
 	for _, v := range hex_map {
-		result += fmt.Sprintf("%X", v)
+		fmt.Fprintf(&builder, "%X", v)
 	}
-
+	result := builder.String()
 	fmt.Println(result)
 }
